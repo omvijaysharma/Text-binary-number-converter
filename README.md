@@ -6,7 +6,7 @@ Welcome to the **Text, Binary, and Number Converter**, an interactive website to
 
 ### 🔗 **Website Link**  
 Access the live project here:  
-[👉 Convert Text, Binary, and Numbers](https://omvijaysharma.github.io/Text-to-binary-and-binary-to-text/)  
+[👉 Convert Text, Binary, and Numbers](https://omvijaysharma.github.io/Text-binary-number-converter/)  
 
 ---
 
