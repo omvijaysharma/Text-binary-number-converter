@@ -3,28 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text, Binary, and Number Converter</title>
+    <title>Ultimate Converter Pro | Text, Binary, Hex, Decimal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Text, Binary, and Number Converter</h2>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-exchange-alt"></i>
+                <h1>Ultimate Converter Pro</h1>
+            </div>
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="converter">Converter</button>
+                <button class="tab-btn" data-tab="history">History</button>
+                <button class="tab-btn" data-tab="settings">Settings</button>
+            </nav>
+        </header>
 
-        <label>Choose an option:</label>
-        <select id="option">
-            <option value="textToBinary">Text to Binary</option>
-            <option value="binaryToText">Binary to Text</option>
-            <option value="numberToBinary">Number to Binary</option>
-            <option value="binaryToNumber">Binary to Number</option>
-        </select>
+        <main class="app-main">
+            <div class="tab-content active" id="converter-tab">
+                <div class="converter-container">
+                    <div class="conversion-controls">
+                        <div class="input-group">
+                            <label for="inputType">Input Type:</label>
+                            <select id="inputType" class="styled-select">
+                                <option value="text">Text</option>
+                                <option value="binary">Binary</option>
+                                <option value="decimal">Decimal</option>
+                                <option value="hex">Hexadecimal</option>
+                                <option value="ascii">ASCII Codes</option>
+                                <option value="base64">Base64</option>
+                            </select>
+                        </div>
 
-        <label for="inputText">Enter your input:</label>
-        <input type="text" id="inputText" />
+                        <div class="input-group">
+                            <label for="outputType">Output Type:</label>
+                            <select id="outputType" class="styled-select">
+                                <option value="binary">Binary</option>
+                                <option value="text">Text</option>
+                                <option value="decimal">Decimal</option>
+                                <option value="hex">Hexadecimal</option>
+                                <option value="ascii">ASCII Codes</option>
+                                <option value="base64">Base64</option>
+                            </select>
+                        </div>
 
-        <button onclick="convert()">Convert</button>
+                        <div class="input-group full-width">
+                            <label for="inputText">Input:</label>
+                            <textarea id="inputText" class="styled-textarea" placeholder="Enter your text here..."></textarea>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button id="convertBtn" class="btn primary">
+                                <i class="fas fa-exchange-alt"></i> Convert
+                            </button>
+                            <button id="clearBtn" class="btn secondary">
+                                <i class="fas fa-eraser"></i> Clear
+                            </button>
+                            <button id="copyInputBtn" class="btn icon" title="Copy Input">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="result-container">
+                        <div class="result-header">
+                            <h3>Result</h3>
+                            <div class="result-actions">
+                                <button id="copyResultBtn" class="btn icon" title="Copy Result">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button id="saveResultBtn" class="btn icon" title="Save to History">
+                                    <i class="fas fa-save"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="resultOutput" class="result-output"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="history-tab">
+                <div class="history-container">
+                    <div class="history-header">
+                        <h2>Conversion History</h2>
+                        <button id="clearHistoryBtn" class="btn danger">
+                            <i class="fas fa-trash"></i> Clear History
+                        </button>
+                    </div>
+                    <div id="historyList" class="history-list">
+                        <!-- History items will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="settings-tab">
+                <div class="settings-container">
+                    <h2>Settings</h2>
+                    <div class="settings-group">
+                        <h3>Theme</h3>
+                        <div class="theme-options">
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview dark-theme"></div>
+                                <span>Dark</span>
+                            </div>
+                            <div class="theme-option" data-theme="darker">
+                                <div class="theme-preview darker-theme"></div>
+                                <span>Darker</span>
+                            </div>
+                            <div class="theme-option" data-theme="amoled">
+                                <div class="theme-preview amoled-theme"></div>
+                                <span>AMOLED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Options</h3>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="autoCopyCheckbox" checked>
+                            <span class="checkmark"></span>
+                            Auto-copy results
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="saveHistoryCheckbox" checked>
+                            <span class="checkmark"></span>
+                            Save conversion history
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>© 2023 Ultimate Converter Pro | v1.0.0</p>
+            <div class="footer-links">
+                <a href="#" id="aboutBtn">About</a>
+                <a href="#" id="helpBtn">Help</a>
+                <a href="#" id="feedbackBtn">Feedback</a>
+            </div>
+        </footer>
     </div>
-    <h3>Result:</h3>
-    <p id="result"></p>
+
+    <div id="notification" class="notification"></div>
 
     <script src="script.js"></script>
 </body>
